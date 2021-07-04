@@ -1,5 +1,3 @@
 package com.toleno.common
 
-actual fun getPlatformName(): String {
-	return "Android"
-}
+actual val platformName = "Android"
