@@ -25,9 +25,13 @@ jobs:
         uses: eskatos/gradle-command-action@v1
         with:
           arguments: package
+          wrapper-cache-enabled: true
+          dependencies-cache-enabled: true
+          configuration-cache-enabled: true
+          build-root-directory: desktop
 
       - name: Dateien hochladen
         uses: shogo82148/actions-upload-release-asset@v1
         with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_path: desktop/build/compose/binaries/main/*/*
+          asset_path: desktop/build/compose/binaries/**
