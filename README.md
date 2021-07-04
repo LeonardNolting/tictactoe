@@ -1,5 +1,12 @@
 # tictactoe
 
+[![download](https://img.shields.io/github/downloads/LeonardNolting/tictactoe/total.svg)](https://github.com/LeonardNolting/tictactoe/releases/latest)
+[![license](https://img.shields.io/github/license/LeonardNolting/tictactoe)](LICENSE.txt)
+[![GitHub top language](https://img.shields.io/github/languages/top/LeonardNolting/tictactoe)](https://kotl.in/)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/LeonardNolting/tictactoe/issues)
+[![upload assets status](https://github.com/LeonardNolting/tictactoe/actions/workflows/upload-assets.yml/badge.svg)](https://github.com/LeonardNolting/tictactoe/actions/workflows/upload-assets.yml)
+
+
 Tic Tac Toe - Kotlin/Multiplatform + Compose (Desktop &amp; Android)
 
 ![Screenshot von der Desktop-App](./screenshots/Desktop.jpg)
