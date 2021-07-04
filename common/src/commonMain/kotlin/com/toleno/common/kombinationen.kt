@@ -1,5 +1,8 @@
 package com.toleno.common
 
+/**
+ * 3 Zellen, die zum Sieg des Spielers führen, der alle setzt
+ */
 typealias Kombination = Triple<Int, Int, Int>
 
 infix fun Int.und(other: Int) = Pair(this, other)
