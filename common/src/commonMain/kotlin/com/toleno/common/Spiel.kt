@@ -20,7 +20,13 @@ import androidx.compose.ui.Modifier
 fun Spiel() {
 	var zellen: Zellen by remember { mutableStateOf(List(9) { null }) }
 	var spielerAmZug: Spieler by remember { mutableStateOf(Spieler.X) }
-	var gewinner: Spieler? by remember { mutableStateOf(null) }
+
+	/**
+	 * Liste der gespielten Runden
+	 *
+	 * Runde, die gerade gespielt wird und noch kein Ergebnis hat, entspricht `null` (folglich kann nur das letzte Element `null` sein).
+	 */
+	var ergebnisse: List<Spieler?> by remember { mutableStateOf(listOf(null)) }
 
 	Aufbau(
 		header = {
@@ -32,7 +38,9 @@ fun Spiel() {
 		onReset = {
 			zellen = List(9) { null }
 			spielerAmZug = Spieler.X
-			gewinner = null
+			// Nur neue Runde zählen, wenn aktuelle zu Ende gespielt wurde (also nicht abgebrochen wurde)
+			if (ergebnisse.last() != null)
+				ergebnisse = ergebnisse + null // null, da Ergebnis der neuen Runde noch unbekannt
 		}
 	) { padding ->
 		Row(
@@ -40,10 +48,14 @@ fun Spiel() {
 			verticalAlignment = Alignment.CenterVertically,
 			horizontalArrangement = Arrangement.Center
 		) {
-			Inhalt(Modifier, zellen, spielerAmZug, gewinner, onClick = { index ->
+			Inhalt(Modifier, zellen, spielerAmZug, ergebnisse, onClick = { index ->
 				zellen = zellen.toMutableList().apply { this[index] = spielerAmZug }
 				spielerAmZug = spielerAmZug.gegenteil
-				gewinner = kombinationen.testen(zellen)
+
+				val gewinner = kombinationen.testen(zellen)
+				if (gewinner != null) // Spiel wurde beendet
+				// Ersetze unbekanntes Ergebnis (null) durch bekanntes Ergebnis (gewinner)
+					ergebnisse = ergebnisse.dropLast(1) + gewinner
 			})
 		}
 	}
