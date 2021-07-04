@@ -15,4 +15,11 @@ Tic Tac Toe - Kotlin/Multiplatform + Compose (Desktop &amp; Android)
     - *Veränderter* State wird an Kind-Komponenten gegeben
     
 ## Installation
-Wird ergänzt
+Es wird empfohlen, die Intellij run configurations zu benutzen.
+
+**Desktop**
+- `./gradlew run` - entwickeln
+- `./gradlew package` - native Archive in `build/compose/binaries` bauen
+
+**Android**
+- `./gradlew installDebug` - Android-App auf Android-Gerät installieren (echt oder Emulator)
