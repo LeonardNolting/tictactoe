@@ -34,8 +34,8 @@ jobs:
           configuration-cache-enabled: true
           build-root-directory: desktop
 
-      - name: Upload Multiple Release Assets
-        uses: NBTX/upload-release-assets@v1
+      - name: Dateien hochladen
+        uses: wireapp/upload-assets
         with:
+          asset_paths: ./desktop/build/compose/binaries/**/*.*
           upload_url: ${{ github.event.release.upload_url }}
-          targets: ./desktop/build/compose/binaries/**/*.*
