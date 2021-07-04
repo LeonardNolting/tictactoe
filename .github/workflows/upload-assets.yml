@@ -35,7 +35,9 @@ jobs:
           build-root-directory: desktop
 
       - name: Dateien hochladen
-        uses: wireapp/upload-assets
+        uses: alexellis/upload-assets@0.2.2
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         with:
           asset_paths: ./desktop/build/compose/binaries/**/*.*
-          upload_url: ${{ github.event.release.upload_url }}
+#          upload_url: ${{ github.event.release.upload_url }}
