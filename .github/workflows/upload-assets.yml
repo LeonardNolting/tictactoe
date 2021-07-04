@@ -19,7 +19,7 @@ jobs:
       - name: Java installieren
         uses: actions/setup-java@v1
         with:
-          java-version: 11
+          java-version: 15
 
       - name: Dateien erstellen
         uses: eskatos/gradle-command-action@v1
