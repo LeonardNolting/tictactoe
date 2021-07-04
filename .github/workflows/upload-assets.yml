@@ -1,0 +1,33 @@
+name: Assets an Release anhängen
+
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  build:
+    # Binaries für alle diese Betriebssysteme erstellen
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, macos-latest, windows-latest ]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Java installieren
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Dateien erstellen
+        uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: package
+
+      - name: Dateien hochladen
+        uses: shogo82148/actions-upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: desktop/build/compose/binaries/main/*/*
