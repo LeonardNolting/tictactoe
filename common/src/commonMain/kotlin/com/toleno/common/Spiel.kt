@@ -31,7 +31,7 @@ fun Spiel() {
 	Aufbau(
 		header = {
 			Column {
-				Text("Tic Tac Toe")
+				Text("Tic Tac Toe auf $platformName")
 				Text("Mit Kotlin + Compose für Android und Desktop", style = MaterialTheme.typography.body2)
 			}
 		},
